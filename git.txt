@@ -1,0 +1,79 @@
+git安装
+
+安装：sudo apt install git
+
+git：项目管理工具，可以进行单人开发或多人合作开发。
+
+git使用：
+1、配置git：
+git config --global user.name "git的账户名"
+git config --global user.email "git的邮箱"
+
+2、根据上面的邮箱及账号生成一个密钥：
+ssh-keygen -t rsa -C "git的邮箱"
+
+默认生成的密钥在 ~/.ssh 目录下
+密钥的文件为：id_rsa.pub
+打开该文件复制密钥，复制到邮箱之前所有的内容。
+
+3、网页端登陆 git账号：
+复制到 用户->settings->ssh&。。。key，新建一个ssh key
+
+4、测试密钥是否可用：
+ssh -T git@github.com
+
+当出现You've successfully authenticated, but GitHub does not provide shell access.   代表成功。
+
+5、测试是否成功：
+下载一个项目进行测试：
+git clone git@github.com:Meakelra/MM.git
+如果可以下载成功，代表没问题。
+
+
+
+git上传项目或更新项目
+
+1、需要在网页端创建一个new repository
+2、当我们需要给一个完全空的repository添加内容时，使用init
+进入想要上传的文件的目录中输入以下命令：
+	git init
+3、创建一个本地库：
+	git remote add origin git@github.com:Meakelra/PythonTest.git
+4、将需要上传的文件写到add后面,将文件添加到本地仓库
+	git add a.txt
+让系统自动判断添加的文件
+	git add .
+5、将文件提交到本地仓库，
+	git commit -m "提交的信息"
+6、将提交的信息同步到git上
+	git push -u origin master
+如果执行push命令时出现提示：（git pull。。。）：执行以下命令：
+	git push -u origin +master   （强制提交）
+
+
+
+
+更新一个git上已经存在的项目（而本地电脑没有时）
+1、clone git上的项目到本地电脑：
+git clone git@github.com:Meakelra/PythonTest.git
+
+2、将需要上传的文件写到add后面,将文件添加到本地仓库
+	git add a.txt
+让系统自动判断添加的文件
+	git add .
+3、将文件提交到本地仓库，
+	git commit -m "提交的信息"
+4、将提交的信息同步到git上
+	git push -u origin master
+如果执行push命令时出现提示：（git pull。。。）：执行以下命令：
+	git push -u origin +master   （强制提交）
+
+
+
+
+多人合作开发：
+
+更新本地仓库：
+git fetch origin
+
+注：有可能在push时会让输入账号及密码，正确输入即可。
